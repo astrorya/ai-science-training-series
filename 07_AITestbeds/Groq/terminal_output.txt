@@ -1,0 +1,32 @@
+(groqflow) astrorya@groq-r01-gn-08:~/groqflow/proof_points/natural_language_processing/minilm$ python minilmv2.py   
+
+Warning: build_model() discovered a cached build of minilmv2, but decided to rebuild for the following reasons: 
+         
+         - Input shape of model "minilmv2" changed from {'attention_mask': (3, 256), 'input_ids': (3, 256), 'token_type_ids': (3, 256)} to {'attention_mask': (2, 128), 'input_ids': (2, 128), 'token_type_ids': (2, 128)} since the last time it was built. 
+         
+         build_model() will now rebuild your model to ensure correctness. You can change this policy by setting the build_model(rebuild=...) argument.
+
+
+
+Building "minilmv2"
+    ✓ Exporting PyTorch to ONNX   
+    ✓ Optimizing ONNX file   
+    ✓ Checking for Op support   
+    ✓ Converting to FP16   
+    ✓ Compiling model   
+    ✓ Assembling model   
+
+Woohoo! Saved to ~/.cache/groqflow/minilmv2
+Preprocessing data.
+
+Info: No inputs received for benchmark. Using the inputs provided during model compilation.
+Running inference on GroqChip.
+Running inference using PyTorch model (CPU).
+100%|████████████████████████████████████████████████████████████████████████████████████████████| 1379/1379 [01:30<00:00, 15.23it/s]
++--------+---------------------------------------+-------------------------+----------------+----------------------+-------------+
+| Source | Spearman Rank Correlation Coefficient | end-to-end latency (ms) | end-to-end IPS | on-chip latency (ms) | on-chip IPS |
++--------+---------------------------------------+-------------------------+----------------+----------------------+-------------+
+|  cpu   |                 0.8203                |          65.68          |     15.23      |          --          |      --     |
+|  groq  |                 0.8203                |           0.48          |    2068.26     |         0.41         |   2460.74   |
++--------+---------------------------------------+-------------------------+----------------+----------------------+-------------+
+Proof point /home/astrorya/groqflow/proof_points/natural_language_processing/minilm/minilmv2.py finished!
